@@ -1,0 +1,127 @@
+{% load static%}
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        img {
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+        }
+    </style>
+</head>
+
+
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-white">
+      <div>
+            <img src="{% static 'img/mip3_ensai.png' %}" height="100" width="150">
+          &emsp; &emsp;&emsp; &emsp; &emsp;
+      </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <ul class="navbar-nav mr-auto">
+     {% if request.user.is_authenticated %}
+
+      <!--<li class="nav-item active">
+        <a class="nav-link" href="/" style="color: #0000FF"><strong> Accueil</strong><span class="sr-only">(current)</span></a>
+      </li>-->
+      &emsp; &emsp;
+
+      {% if perms.maplateforme_app.view_etudiant %}
+          <li class="nav-item">
+            <a class="nav-link" href="/etudiant_list" style="color: #007bff"><b>Etudiants</b></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="" style="color: black"><b>|</b></a>
+          </li>
+       {% endif %}
+
+       {% if perms.maplateforme_app.view_examen_cours%}
+            <li class="nav-item active">
+                <a class="nav-link"  href="/examencours_list" style="color: #007bff"><b>Informatique 3</b></a>
+             </li>
+       {% endif %}
+        <li class="nav-item active">
+            <a class="nav-link" href="" style="color: black"><b>|</b></a>
+          </li>
+       {% if perms.maplateforme_app.view_examen_tp %}
+          <li class="nav-item active">
+            <a class="nav-link" href="/examentp_list" style="color: #007bff"><b>TP-Informatique 3</b></a>
+          </li>
+      {% endif %}
+
+      {% if perms.maplateforme_app.view_filiere %}
+          <li class="nav-item">
+            <a class="nav-link" href="" style="color: black"><b>|</b></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/filiere_list" style="color: #007bff"><b>Filières</b></a>
+          </li>
+       {% endif %}
+
+       {% if perms.maplateforme_app.view_cours %}
+           <li class="nav-item">
+            <a class="nav-link" href="" style="color: black"><b>|</b></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/cours_list" style="color: #007bff"><b>Cours</b></a>
+          </li>
+       {% endif %}
+      {% if perms.maplateforme_app.view_tp %}
+          <li class="nav-item">
+            <a class="nav-link" href="" style="color: black"><b>|</b></a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="/tp_list" style="color: #007bff"><b>TPs</b></a>
+          </li>
+      {% endif %}
+
+
+       <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #6c757d"><b>Supports de Cours et TPs</b> </a>
+         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+           {% if perms.maplateforme_app.view_support_cours %}
+            <a class="dropdown-item" href="/supportcours_list" style="color: #4d4d4d" ><b>Supports Informatique 3</b></a>
+           {% endif %}
+
+           {% if perms.maplateforme_app.view_support_tp %}
+            <a class="dropdown-item" href="/supportp_list" style="color: #4d4d4d" ><b>Supports TP-Informatique 3</b></a>
+           {% endif %}
+
+        </div>
+
+      </li>
+
+      <!--<li class="nav-item">
+        <a class="nav-link" href="/parametrage_list">Paramétrage de la Machine</a>
+      </li> -->
+      <!-- <li class="nav-item">
+        <a class="nav-link" href="/remplissage_list">Remplissage</a>
+      </li> -->
+
+
+     {% endif %}
+    </ul>
+      {% if request.user.is_authenticated %}
+        <li><a href="/accounts/logout" style="color: red"><b>Déconnexion</b></a></li>
+      {% else %}
+        <li><a href="/accounts/login" style="color: red" ><b>Démarrer</b> </a>  </li>
+      {% endif %}
+
+
+  </div>
+
+  <div>
+      &emsp; &emsp; &emsp;
+
+  </div>
+</nav>
+
+      {% if not request.user.is_authenticated %}
+          <div>
+
+          </div>
+      {% endif %}

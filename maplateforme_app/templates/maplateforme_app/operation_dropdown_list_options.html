@@ -1,0 +1,4 @@
+<option value="">---------</option>
+{% for operation in operations %}
+<option value="{{ operation.pk }}">{{ operation.libelle_operation}}</option>
+{% endfor %}

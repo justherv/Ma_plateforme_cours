@@ -1,0 +1,16 @@
+{% extends 'maplateforme_app/base.html' %}
+
+{% block content %}
+    <div class="Etudiant">
+        {% if etudiant.matricule_etudiant %}
+            <div class="date">
+                <h2>{{ etudiant.matricule_etudiant }}</h2>
+            </div>
+        {% endif %}
+        {% if user.is_authenticated %}
+          <a class="btn btn-default" href="{% url 'etudiant_edit' pk=etudiant.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+        {% endif %}
+        <p>{{ etudiant.nom_etudiant }}</p>
+        <p>{{ etudiant.prenom_etudiant|linebreaksbr }}</p>
+    </div>
+{% endblock %}
